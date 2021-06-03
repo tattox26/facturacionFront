@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-register',
@@ -8,32 +9,49 @@ import { AuthService } from '../_services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   form: any = {
-    username: null,
+    name: null,
     email: null,
-    password: null
+    password: null,
+    password_confirmation: null
   };
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-
-  constructor(private authService: AuthService) { }
+  isLoggedIn = false;
+  isLoginFailed = false;
+  constructor(private authService: AuthService,private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;    
+    }
   }
 
   onSubmit(): void {
-    const { username, email, password } = this.form;
+    const { name, email, password,password_confirmation } = this.form;
 
-    this.authService.register(username, email, password).subscribe(
+    this.authService.register(name, email, password, password_confirmation).subscribe(
       data => {
-        console.log(data);
+        this.tokenStorage.saveToken(data.token);
+        this.tokenStorage.saveUser(email);
+        
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        //this.roles = this.tokenStorage.getUser().roles;
+        this.reloadPage();
+
         this.isSuccessful = true;
         this.isSignUpFailed = false;
       },
       err => {
-        this.errorMessage = err.error.message;
+        console.log(err.error);
+        this.errorMessage = err.error;
         this.isSignUpFailed = true;
       }
     );
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 }

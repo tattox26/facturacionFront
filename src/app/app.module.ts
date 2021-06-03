@@ -7,24 +7,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
-import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
-import { BoardUserComponent } from './board-user/board-user.component';
-
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+
+import { BuyListComponent } from './buy-list/buy-list.component';
+import { BuyCreateComponent } from './buy-create/buy-create.component';
+import { BuyUpdateComponent } from './buy-update/buy-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
-    ProfileComponent,
-    BoardAdminComponent,
-    BoardModeratorComponent,
-    BoardUserComponent
+    BuyListComponent,
+    BuyCreateComponent,
+    BuyUpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Angular11JwtAuth": {
+    "Angular11": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Angular11JwtAuth",
+            "outputPath": "dist/Angular11",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Angular11JwtAuth:build"
+            "browserTarget": "Angular11:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Angular11JwtAuth:build:production"
+              "browserTarget": "Angular11:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Angular11JwtAuth:build"
+            "browserTarget": "Angular11:build"
           }
         },
         "test": {
@@ -113,16 +113,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Angular11JwtAuth:serve"
+            "devServerTarget": "Angular11:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Angular11JwtAuth:serve:production"
+              "devServerTarget": "Angular11:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "Angular11JwtAuth"
+  "defaultProject": "Angular11",
+  "cli": {
+    "analytics": "0740ddcb-a3db-46d0-b8f9-ee0c7565cc7f"
+  }
 }

@@ -11,6 +11,7 @@ describe('AuthService', () => {
   });
 
   it('should be created', () => {
+    console.log(service)
     expect(service).toBeTruthy();
   });
 });

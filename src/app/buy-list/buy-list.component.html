@@ -1,0 +1,70 @@
+<div class="list row">
+    
+    <div class="col-md-6">
+      <br><br><br>
+      <h4>Lista de de items</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let purchase of purchases; let i = index" 
+           [class.active]="i == currentIndex"
+           (click)="setActiveBuy(purchase, i)"
+        >
+        {{ purchase.nombre }}
+        </li>
+      </ul>
+
+      <a  href="buy-create" class="nav-link" routerLink="buyCreate">
+        <button class="m-3 btn btn-sm btn-primary" >
+          Crear
+        </button>
+      </a>
+      
+    </div>
+    <div class="col-md-6">
+      <br><br><br>
+      <div *ngIf="currentBuy">
+        <h4>Compras</h4>
+        <div>
+          <label><strong>id: </strong></label>
+          {{ currentBuy.id }}
+        </div>
+        <div>
+          <label><strong>Nombre: </strong></label>
+          {{ currentBuy.nombre }}
+        </div>
+        <div>
+          <label><strong>Descripcion:</strong></label>
+           {{ currentBuy.descripcion }}
+        </div>
+        <div>
+          <label><strong>Cantidad:</strong></label>
+          {{ currentBuy.cantidad }}
+        </div>
+        <div>
+          <label><strong>Valor:</strong></label>
+          {{ currentBuy.valor }}
+        </div>
+        <div>
+          <label><strong>Total:</strong></label>
+          {{ currentBuy.total }}
+        </div>
+        
+
+        <a  routerLink="buyUpdate/{{currentBuy.id}}">
+          <button class=" btn btn-sm btn-primary" >
+           Editar
+          </button>
+        </a>
+        <br>
+        <br>
+        
+        <button class=" btn btn-sm btn-danger"  (click)="deleteItem( currentBuy.id )" >  
+          Eliminar
+        </button>
+        
+      </div>
+      
+    </div>
+  </div>
+  

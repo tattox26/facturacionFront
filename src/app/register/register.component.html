@@ -13,29 +13,29 @@
       novalidate
     >
       <div class="form-group">
-        <label for="username">Username</label>
+        <label for="name">Nombre</label>
         <input
           type="text"
           class="form-control"
-          name="username"
-          [(ngModel)]="form.username"
+          name="name"
+          [(ngModel)]="form.name"
           required
           minlength="3"
           maxlength="20"
-          #username="ngModel"
+          #name="ngModel"
         />
-        <div class="alert-danger" *ngIf="username.errors && f.submitted">
-          <div *ngIf="username.errors.required">Username is required</div>
-          <div *ngIf="username.errors.minlength">
-            Username must be at least 3 characters
+        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+          <div *ngIf="name.errors.required">El nombre es requerido</div>
+          <div *ngIf="name.errors.minlength">
+            EL nombre debe tener un minimo de 3 caracteres
           </div>
-          <div *ngIf="username.errors.maxlength">
-            Username must be at most 20 characters
+          <div *ngIf="name.errors.maxlength">
+            EL nombre debe tener un maximo de 20 caracteres
           </div>
         </div>
       </div>
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">Correo eletronico</label>
         <input
           type="email"
           class="form-control"
@@ -46,14 +46,14 @@
           #email="ngModel"
         />
         <div class="alert-danger" *ngIf="email.errors && f.submitted">
-          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.required">El correo eletonico es requerido</div>
           <div *ngIf="email.errors.email">
-            Email must be a valid email address
+            El correo electrónico debe ser una dirección de correo electrónico válida
           </div>
         </div>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">Contraseña</label>
         <input
           type="password"
           class="form-control"
@@ -64,23 +64,42 @@
           #password="ngModel"
         />
         <div class="alert-danger" *ngIf="password.errors && f.submitted">
-          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.required">La contraseña es requerida</div>
           <div *ngIf="password.errors.minlength">
-            Password must be at least 6 characters
+            La contraseña debe tener un minimo de 6 caracteres
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password_confirmation">Confirmar Contraseña</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password_confirmation"
+          [(ngModel)]="form.password_confirmation"
+          required
+          minlength="6"
+          #password_confirmation="ngModel"
+        />
+        <div class="alert-danger" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors.required">La contraseña es requerida</div>
+          <div *ngIf="password.errors.minlength">
+            La contraseña debe tener un minimo de 6 caracteres
           </div>
         </div>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-block">Sign Up</button>
+        <button class="btn btn-primary btn-block">Registro</button>
       </div>
 
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-        Signup failed!<br />{{ errorMessage }}
+        Fallo: <br />{{ errorMessage }}
       </div>
     </form>
 
     <div class="alert alert-success" *ngIf="isSuccessful">
-      Your registration is successful!
+      Registro con exito
     </div>
   </div>
 </div>
